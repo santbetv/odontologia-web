@@ -1,0 +1,26 @@
+<br><br>
+
+<div class="card border-primary mb-3">
+  <div class="card-header">{{tituloPersonas}}</div>
+  <div class="card-body text-primary">
+    <h5 class="card-title">Listado de personas</h5>
+  </div>
+</div>
+
+
+<table class="table table-bordered table-striped">
+  <thead>
+    <tr>
+      <th>Id</th>
+      <th>Nombre</th>
+      <th>Cedula</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let item of listaPersonas | async">
+      <td>{{item.id}}</td>
+      <td>{{item.nombre}}</td>
+      <td>{{item.celular}}</td>
+    </tr>
+  </tbody>
+</table>

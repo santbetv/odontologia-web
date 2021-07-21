@@ -1,0 +1,44 @@
+<br>
+<div class="card bg-white text-black">
+    <div class="card-header">{{title}}</div>
+    <div class="card-body">
+        <form class="needs-validation" autocomplete="off" [formGroup]="formularioPersona">
+            <div>
+                <label for="nombre" class="col-form-label ">Nombre Persona</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="nombre" id="nombre"
+                        placeholder="* Nombre de persona" placement="right">
+                    <div *ngIf="extraerNombre().invalid && (extraerNombre().dirty || extraerNombre().touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="extraerNombre().errors.required">
+                            El nombre de la persona es requerido
+                        </div>
+                        <div *ngIf="extraerNombre().errors.pattern">
+                            Solo deben de ser caracteres
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <label for="celular" class="col-form-label ">Celular</label>
+                <div>
+                    <input type="text" class="form-control" formControlName="celular" id="celular"
+                        placeholder="* celular" placement="right">
+                    <div *ngIf="extraerCelular().invalid && (extraerCelular().dirty || extraerCelular().touched)"
+                        class="alert alert-danger">
+                        <div *ngIf="extraerCelular().errors.required">
+                            El Celuar es requerido
+                        </div>
+                        <div *ngIf="extraerCelular().errors.pattern">
+                            Solo deben de ser numeros
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <br>
+            <div>
+                <button type="submit" class="btn btn-success" id="buttonRegistrarPersona" (click)="agregarPersona()">Guardar</button>
+            </div>
+        </form>
+    </div>
+</div>

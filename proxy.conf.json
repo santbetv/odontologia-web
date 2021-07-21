@@ -1,0 +1,6 @@
+{
+  "/ceiba-odontologia": {
+    "target": "http://localhost:8090",
+    "logLevel": "debug"
+  }
+}

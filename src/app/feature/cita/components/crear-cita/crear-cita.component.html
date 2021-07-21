@@ -1,0 +1,93 @@
+<br>
+<div class="card bg-white text-black">
+  <div class="card-header">{{title}}</div>
+  <div class="card-body">
+
+    <form class="needs-validation" autocomplete="off" [formGroup]="formularioCita">
+      <div>
+        <label for="nombre" class="col-form-label ">Nombre Cita</label>
+        <div>
+          <input type="text" class="form-control" formControlName="nombre" id="nombre" placeholder="* Nombre de cita"
+            placement="right">
+          <div *ngIf="extraerNombre().invalid && (extraerNombre().dirty || extraerNombre().touched)"
+            class="alert alert-danger">
+            <div *ngIf="extraerNombre().errors.required">
+              El nombre de usuario es requerido
+            </div>
+            <div *ngIf="extraerNombre().errors.pattern">
+              Solo deben de ser caracteres
+            </div>
+          </div>
+
+        </div>
+
+
+
+      </div>
+
+      <div>
+        <label for="odontologo" class="col-form-label ">Odontologo</label>
+        <div>
+          <input type="text" class="form-control" formControlName="odontologo" id="odontologo"
+            placeholder="* Odontologo" placement="right">
+
+          <div *ngIf="extraerOdontologo().invalid && (extraerOdontologo().dirty || extraerOdontologo().touched)"
+            class="alert alert-danger">
+            <div *ngIf="extraerOdontologo().errors.required">
+              El Odontologo es requerido
+            </div>
+            <div *ngIf="extraerOdontologo().errors.pattern">
+              Solo deben de ser caracteres
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="valor" class="col-form-label ">Valor</label>
+        <div>
+          <input type="text" class="form-control" formControlName="valor" id="valor" placeholder="* Valor"
+            placement="right">
+          <div *ngIf="extraerValor().invalid && (extraerValor().dirty || extraerValor().touched)"
+            class="alert alert-danger">
+            <div *ngIf="extraerValor().errors.required">
+              El Valor es requerido
+            </div>
+            <div *ngIf="extraerValor().errors.pattern">
+              Solo deben de ser numeros
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label for="fechaCreacion" class="col-form-label ">Fecha Cita</label>
+        <div>
+          <input type="date" class="form-control" formControlName="fechaCreacion" id="fechaCreacion"
+            placeholder="* Fecha cita" placement="right">
+          <div *ngIf="extraerFecha().invalid && (extraerFecha().dirty || extraerFecha().touched)"
+            class="alert alert-danger">
+            <div *ngIf="extraerFecha().errors.required">
+              La fecha es requerido
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <br>
+      <div>
+
+        <button type="submit" class="btn btn-success" id="buttonRegistrarCita" (click)="agregarCita()">Guardar</button>
+
+      </div>
+
+
+
+    </form>
+
+
+
+  </div>
+
+
+</div>
