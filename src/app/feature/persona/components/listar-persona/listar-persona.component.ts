@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
   styleUrls: ['./listar-persona.component.css']
 })
 export class ListarPersonaComponent implements OnInit {
-  tituloPersonas: String = 'Personas en sistema'
+  tituloPersonas = 'Personas en sistema';
   public listaPersonas: Observable<Persona[]>;
   public persona: Observable<Persona[]>;
 

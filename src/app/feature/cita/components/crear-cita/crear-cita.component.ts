@@ -19,7 +19,7 @@ export class CrearCitaComponent implements OnInit {
   title = 'Crear cita';
   public cita: Cita[] = [];
   public formularioCita: any;
-  public datoFecha: String = "";
+  public datoFecha = '';
 
 
   constructor(
@@ -53,9 +53,9 @@ export class CrearCitaComponent implements OnInit {
     });
   }
 
-  validarFecha(): String {
+  validarFecha(): string {
     const dateSendingToServer = new DatePipe('en-US').transform(this.formularioCita.get('fechaCreacion').value, 'yyyy-MM-dd');
-    this.datoFecha = "" + dateSendingToServer;
+    this.datoFecha = '' + dateSendingToServer;
     return this.datoFecha;
   }
 
@@ -86,39 +86,30 @@ export class CrearCitaComponent implements OnInit {
       odontologo: this.formularioCita.get('odontologo').value,
       valor: this.formularioCita.get('valor').value,
       fechaCreacion: this.validarFecha(),
-      idPersona: 1
-    }
-    return cita;
-  }
-
-  crearCitaPrueba(): Cita {
-    const cita: Cita = {
-      id: 1,
-      nombre: "Corona",
-      odontologo: "Tomas",
-      valor: 80000,
-      fechaCreacion: "2021-07-15",
-      idPersona: 1
-    }
+      idPersona: 1,
+      mensajeRespuesta: ''
+    };
     return cita;
   }
 
   public agregarCita() {
-
     if (this.formularioCita.invalid) {
-
-      Swal.fire('Oops...', 'Valida los valores!', 'error')
+      Swal.fire('Oops...', 'Valida los valores!', 'error');
       return;
     } else {
       this.citaService.guardar(this.crearCita()).
-        subscribe(() => {
+        subscribe(clien => {
+          this.citaService.consultarCita(clien.valor).subscribe(
+            datoCita => {
+              Swal.fire('Nueva cita', `Cita ${this.crearCita().nombre} Estado: ${datoCita.mensajeRespuesta}`, 'success');
+            }
+          );
           this.router.navigate(['/cita/listar']);
-          Swal.fire('Nueva cita', `Cita ${this.crearCita().nombre} creada para el siguiente día hábil`, 'success')
         },
           (error) => {
             Swal.fire(`Error ${error.error.nombreExcepcion}`, error.error.mensaje, 'error');
           }
-        )
+        );
     }
   }
 }

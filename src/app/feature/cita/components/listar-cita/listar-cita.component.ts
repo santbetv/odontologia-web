@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { Observable } from 'rxjs';
 import { Cita } from '../../shared/model/cita';
 import { CitaService } from '../../shared/service/cita.service';
 /* import Swal from 'sweetalert2'; */
@@ -12,8 +11,8 @@ import { CitaService } from '../../shared/service/cita.service';
 })
 export class ListarCitaComponent implements OnInit {
 
-  tituloCitas: String = 'Citas clientes'
-  public listaCitas: Observable<Cita[]>;
+  tituloCitas = 'Citas clientes';
+  citas: Cita[] = [];
   filtroForm: FormGroup;
   validarFiltro = false;
 
@@ -23,51 +22,17 @@ export class ListarCitaComponent implements OnInit {
     this.inizializarTabla();
   }
 
-  /*  eliminarCita(cita: Cita) {
- 
-     const swalWithBootstrapButtons = Swal.mixin({
-       customClass: {
-         confirmButton: 'btn btn-success',
-         cancelButton: 'btn btn-danger'
-       },
-       buttonsStyling: false
-     })
- 
- 
-     swalWithBootstrapButtons.fire({
-       title: 'Esta seguro?',
-       text: `¿Seguro que desea eliminar al cliente ${cita.nombre}?`,
-       icon: 'warning',
-       showCancelButton: true,
-       confirmButtonText: 'Si, elimnar!',
-       cancelButtonText: 'No, cancelar!',
-       reverseButtons: true
-     }).then((result) => {
- 
-       if (result.isConfirmed) {
- 
-         this.citaService.eliminar(cita.id).subscribe(
-           reponse => {
-             console.log(reponse)
-             this.inizializarTabla();
-             swalWithBootstrapButtons.fire(
-               'Eliminado!',
-               `Tu Cita ${cita.nombre} ha sido Eliminada.`,
-               'success'
-             )
-           }
-         )
- 
-       }
-     })
-   } */
-
-  eliminarCita(cita: Cita) {
-    this.citaService.eliminar(cita.id).subscribe();
-    this.inizializarTabla();
+  public inizializarTabla() {
+    this.citaService.consultar().subscribe(
+      citas => this.citas = citas
+    );
   }
 
-  inizializarTabla() {
-    this.listaCitas = this.citaService.consultar();
+  eliminarCita(cita: Cita) {
+    this.citaService.eliminar(cita.id).subscribe(
+      () => {
+        this.citas = this.citas.filter(cit => cit !== cita);
+      }
+    );
   }
 }

@@ -47,6 +47,4 @@ describe('workspace-project Cita', () => {
         cita.navigateTo('/cita/listar');
         expect(2).toBe(cita.contarCitas());
     });
-
-    
 });

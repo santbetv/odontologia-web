@@ -1,7 +1,7 @@
 export class Persona {
   id: number;
-  nombre: String;
-  celular: String;
+  nombre: string;
+  celular: string;
 
   constructor(
     id: number,

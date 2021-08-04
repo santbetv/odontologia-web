@@ -5,8 +5,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
 import { ListarPersonaComponent } from './listar-persona.component';
-import { PersonaService } from '../../shared/service/persona.service'
-
+import { PersonaService } from '../../shared/service/persona.service';
 
 describe('ListarPersonaComponent', () => {
   let component: ListarPersonaComponent;

@@ -6,7 +6,7 @@ import { CrearPersonaComponent } from './components/crear-persona/crear-persona.
 import { PersonaComponent } from './components/persona/persona.component';
 import { SharedModule } from '@shared/shared.module';
 import { DatePipe } from '@angular/common';
-import { PersonaService } from './shared/service/persona.service'
+import { PersonaService } from './shared/service/persona.service';
 import { FormsModule } from '@angular/forms';
 
 

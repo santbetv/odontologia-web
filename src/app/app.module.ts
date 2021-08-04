@@ -7,12 +7,6 @@ import { HomeComponent } from '@home/home.component';
 import { ProductoModule } from '@producto/producto.module';
 import { CoreModule } from '@core/core.module';
 import { CookieService } from 'ngx-cookie-service';
-import { PersonaModule } from '@persona/persona.module';
-import { CitaModule } from '@cita/cita.module';
-
-
-
-
 
 @NgModule({
   declarations: [
@@ -23,8 +17,6 @@ import { CitaModule } from '@cita/cita.module';
     BrowserModule,
     AppRoutingModule,
     ProductoModule,
-    PersonaModule,
-    CitaModule,
     CoreModule
   ],
   providers: [CookieService],

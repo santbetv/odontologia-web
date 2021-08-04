@@ -1,18 +1,20 @@
 export class Cita {
   id: number;
-  nombre: String;
-  odontologo: String;
+  nombre: string;
+  odontologo: string;
   valor: number;
-  fechaCreacion: String;
+  fechaCreacion: string;
   idPersona: number;
+  mensajeRespuesta: string;
 
   constructor(
     id: number,
-    nombre: String,
-    odontologo: String,
+    nombre: string,
+    odontologo: string,
     valor: number,
-    fechaCreacion: String,
-    idPersona: number
+    fechaCreacion: string,
+    idPersona: number,
+    mensajeRespuesta: string
   ) {
     this.id = id;
     this.nombre = nombre;
@@ -20,5 +22,6 @@ export class Cita {
     this.valor = valor;
     this.fechaCreacion = fechaCreacion;
     this.idPersona = idPersona;
+    this.mensajeRespuesta = mensajeRespuesta;
   }
 }

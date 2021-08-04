@@ -1,6 +1,6 @@
 {
-  "/ceiba-odontologia": {
-    "target": "http://localhost:8090",
-    "logLevel": "debug"
-  }
+    "/ceiba-odontologia": {
+        "target": "http://ceiba-odontologia_container:8090",
+        "logLevel": "debug"
+    }
 }

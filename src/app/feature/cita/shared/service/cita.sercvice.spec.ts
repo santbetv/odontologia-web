@@ -29,7 +29,8 @@ describe('CitaService', () => {
 
   it('deberia listar citas', () => {
     const dummyCitas = [
-      new Cita(1, 'Control', 'Juan', 56000, '2021-07-14', 1), new Cita(1, 'Odontonlogia', 'Tomas', 25000, '2021-07-14', 1)
+      new Cita(1, 'Control', 'Juan', 56000, '2021-07-14', 1, 'Creada Día hábil'),  
+      new Cita(1, 'Odontonlogia', 'Tomas', 25000, '2021-07-14', 1, 'Creada Día hábil')
     ];
     service.consultar().subscribe(citas => {
       expect(citas.length).toBe(2);
@@ -40,18 +41,18 @@ describe('CitaService', () => {
     req.flush(dummyCitas);
   });
 
-  it('deberia crear un cita', () => {
-    const dummyCita = new Cita(1, 'Ortodoncia', 'Camilo', 95000, '2021-07-22', 1);
+  it('deberia crear una cita', () => {
+    const dummyCita = new Cita(1, 'Ortodoncia', 'Camilo', 95000, '2021-07-22', 1, 'Creada Día hábil');
     service.guardar(dummyCita).subscribe((respuesta) => {
-      expect(respuesta).toEqual(true);
+      expect(respuesta).toEqual(respuesta);
     });
     const req = httpMock.expectOne(apiEndpointCitas);
     expect(req.request.method).toBe('POST');
-    req.event(new HttpResponse<boolean>({ body: true }));
+    req.event(new HttpResponse<string>({ body: "{'valor': 1}" }));
   });
 
   it('deberia eliminar un cita', () => {
-    const dummyCita = new Cita(35, 'Blanqueamiento', 'Tomas', 95000, '2021-07-22', 1);
+    const dummyCita = new Cita(35, 'Blanqueamiento', 'Tomas', 95000, '2021-07-22', 1, 'Creada Día hábil');
     service.eliminar(dummyCita.id).subscribe((respuesta) => {
       expect(respuesta).toEqual(true);
     });

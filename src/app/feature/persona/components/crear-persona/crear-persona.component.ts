@@ -14,7 +14,7 @@ export class CrearPersonaComponent implements OnInit {
   title = 'Crear persona';
   public cita: Persona[] = [];
   public formularioPersona: any;
-  public datoFecha: String = "";
+  public datoFecha = '';
 
 
   constructor(
@@ -58,7 +58,7 @@ export class CrearPersonaComponent implements OnInit {
       id: 1,
       nombre: this.formularioPersona.get('nombre').value,
       celular: this.formularioPersona.get('celular').value
-    }
+    };
     return persona;
   }
 
@@ -66,18 +66,18 @@ export class CrearPersonaComponent implements OnInit {
 
     if (this.formularioPersona.invalid) {
 
-      Swal.fire('Oops...', 'Valida los valores!', 'error')
+      Swal.fire('Oops...', 'Valida los valores!', 'error');
       return;
     } else {
       this.personaService.guardar(this.crearPersona()).
         subscribe(() => {
           this.router.navigate(['/persona/listar']);
-          Swal.fire('Nueva persona', `Persona ${this.crearPersona().nombre} creada`, 'success')
+          Swal.fire('Nueva persona', `Persona ${this.crearPersona().nombre} creada`, 'success');
         },
           (error) => {
             Swal.fire(`Error ${error.error.nombreExcepcion}`, error.error.mensaje, 'error');
           }
-        )
+        );
     }
   }
 

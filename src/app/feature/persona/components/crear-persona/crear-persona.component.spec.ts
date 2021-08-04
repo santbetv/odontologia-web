@@ -4,8 +4,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RouterTestingModule } from '@angular/router/testing';
 import { HttpService } from '@core/services/http.service';
-import { PersonaService } from '../../shared/service/persona.service'
- 
+import { PersonaService } from '../../shared/service/persona.service';
 import { CrearPersonaComponent } from './crear-persona.component';
 
 describe('CrearPersonaComponent', () => {

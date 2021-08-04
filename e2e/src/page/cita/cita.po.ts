@@ -5,13 +5,9 @@ export class CitaPage {
     private inputOdontologo = element(by.id('odontologo'));
     private inputValor = element(by.id('valor'));
     private inputFechaCreacion = element(by.id('fechaCreacion'));
-    
-    /* private listaCitas = element.all(by.css('.card .card-body .table tbody tr')); */
     private listaCitas = element.all(by.xpath('/html/body/app-root/app-cita/app-listar-cita/table/tbody/tr'));
-    /* private buttonEliminarCita = element(by.css('.card .card-body .table tbody tr[3] td[6] button[1]')); */
     private buttonEliminarCita = element(by.xpath('/html/body/app-root/app-cita/app-listar-cita/table/tbody/tr[3]/td[6]/button[1]'));
     private buttonRegistrarCita = element(by.xpath('//*[@id="buttonRegistrarCita"]'));
-    
 
     async ingresarNombre(nombre) {
         await this.inputNombre.sendKeys(nombre);
@@ -28,13 +24,9 @@ export class CitaPage {
         await this.inputFechaCreacion.sendKeys(fechaCreacion);
     }
 
-
-
     async contarCitas() {
         return this.listaCitas.count();
     }
-
-    
 
     async clickBotonRegistrarCita() {
         await this.buttonRegistrarCita.click();
@@ -44,10 +36,8 @@ export class CitaPage {
         await this.buttonEliminarCita.click();
     }
 
-
     async navigateTo(s: string) {
         console.log(browser.baseUrl);
         return browser.get(browser.baseUrl + s) as Promise<any>;
     }
-
-} 
+}
